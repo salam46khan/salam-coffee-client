@@ -1,0 +1,37 @@
+.banner {
+    background: url('../../assets/img/banner-bg.jpg');
+    height: 95vh;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.banner-title {
+    font-size: clamp(5rem, 30vw, 18rem);
+}
+
+.banner-box {
+    white-space: nowrap;
+    overflow: hidden;
+    transform-origin: left;
+    /* animation: animateBox 1s infinite 4s; */
+    animation-name: animateBox;
+    animation-duration: 4s;
+    animation-timing-function: ease-in-out;
+    animation-delay: 0.6s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-fill-mode: both;
+    font-weight: 600;
+}
+
+@keyframes animateBox {
+    0% {
+        max-width: 0;
+    }
+
+    100% {
+        max-width: 260px;
+    }
+}

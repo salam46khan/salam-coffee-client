@@ -1,0 +1,19 @@
+@import "tailwindcss";
+@plugin "daisyui";
+@import url('https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&family=Playball&family=Rubik+Mono+One&display=swap');
+
+@theme {
+  --color-primaryColor: #703A1D;
+  --color-Secondary: #FF3639;
+
+  --font-bannerTitle: "Rubik Mono One", monospace;
+  --font-subTitle:  "Playball", cursive;
+  --font-Narmal:  "Mona Sans", sans-serif;
+}
+
+
+.container{
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}

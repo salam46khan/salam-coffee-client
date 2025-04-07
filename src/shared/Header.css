@@ -1,0 +1,12 @@
+.header{
+    background: #FEFEFE;
+}
+.regis-btn{
+    border: 1px solid #703A1D;
+    color: #703A1D;
+    padding: 5px 10px;
+    transition: 0.3s;
+}
+.regis-btn:hover{
+    border-radius: 25px;
+}

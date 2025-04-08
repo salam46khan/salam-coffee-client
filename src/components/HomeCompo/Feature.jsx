@@ -10,17 +10,17 @@ const Feature = () => {
                 <div className="p-5">
                     <VscCoffee className="text-Secondary text-5xl"/>
                     <h2 className="font-subTitle text-xl text-primaryColor py-2">Awesome Aroma</h2>
-                    <p>You will definitely be a fan of the design & aroma of your coffee</p>
+                    <p className="text-slate-400">You will definitely be a fan of the design & aroma of your coffee</p>
                 </div>
                 <div className="p-5">
                     <LiaAwardSolid className="text-Secondary text-5xl"/>
                     <h2 className="font-subTitle text-xl text-primaryColor py-2">High Quality</h2>
-                    <p>We served the coffee to you maintaining the best quality</p>
+                    <p className="text-slate-400">We served the coffee to you maintaining the best quality</p>
                 </div>
                 <div className="p-5">
                     <CiCoffeeBean className="text-Secondary text-5xl"/>
                     <h2 className="font-subTitle text-xl text-primaryColor py-2">Pure Grades</h2>
-                    <p>The coffee is made of the green coffee beans which you will love</p>
+                    <p className="text-slate-400">The coffee is made of the green coffee beans which you will love</p>
                 </div>
                 
             </div>

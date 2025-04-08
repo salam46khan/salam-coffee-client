@@ -5,6 +5,7 @@ import Home from '../pages/Home';
 import Auth from '../layout/Auth';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
+import Admin from '../layout/Admin';
 
 const Router = createBrowserRouter([
     {
@@ -28,6 +29,20 @@ const Router = createBrowserRouter([
             {
                 path: 'signup',
                 element: <Register></Register>
+            }
+        ]
+    },
+    {
+        path: 'dashboard',
+        element: <Admin></Admin>,
+        children: [
+            {
+                path: 'coffee',
+                element: <p>coffee</p>
+            },
+            {
+                path: 'add-coffee',
+                element: <p>add-coffee</p>
             }
         ]
     }

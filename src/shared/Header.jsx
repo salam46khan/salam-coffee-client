@@ -11,7 +11,7 @@ const Header = () => {
             <NavLink to={'/coffee'}>Coffee</NavLink>
         </li>
         <li>
-            <NavLink to={'/add-coffee'}>Add Coffee</NavLink>
+            <NavLink to={'/dashboard/coffee'}>Dashboard</NavLink>
         </li>
     </>
     return (

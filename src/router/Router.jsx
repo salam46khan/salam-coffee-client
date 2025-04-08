@@ -6,6 +6,7 @@ import Auth from '../layout/Auth';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
 import Admin from '../layout/Admin';
+import AddCoffee from '../components/DashboardCompo/AddCoffee';
 
 const Router = createBrowserRouter([
     {
@@ -42,7 +43,7 @@ const Router = createBrowserRouter([
             },
             {
                 path: 'add-coffee',
-                element: <p>add-coffee</p>
+                element: <AddCoffee></AddCoffee>
             }
         ]
     }

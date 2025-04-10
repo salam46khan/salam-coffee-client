@@ -1,0 +1,6 @@
+.page-hade{
+    background: linear-gradient(#0008, #000e), url('../../../assets/img/other-page-bg.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

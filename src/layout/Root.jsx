@@ -2,6 +2,7 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Header from '../shared/Header';
 import Headroom from 'react-headroom';
+import Footer from '../shared/Footer';
 
 const Root = () => {
     return (
@@ -11,7 +12,7 @@ const Root = () => {
             </Headroom>
 
             <Outlet></Outlet>
-            <footer>footer</footer>
+            <Footer></Footer>
         </div>
     );
 };

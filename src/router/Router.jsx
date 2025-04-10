@@ -8,6 +8,8 @@ import Register from '../pages/Register';
 import Admin from '../layout/Admin';
 import AddCoffee from '../components/DashboardCompo/AddCoffee';
 import AllCoffee from '../components/DashboardCompo/AllCoffee';
+import Coffee from '../pages/Coffee';
+import SingleCoffee from '../components/CoffeeCompo/SingleCoffee';
 
 const Router = createBrowserRouter([
     {
@@ -17,6 +19,15 @@ const Router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>
+            },
+            {
+                path: 'coffee',
+                element: <Coffee></Coffee>
+            },
+            {
+                path: 'coffee/:id',
+                element: <SingleCoffee></SingleCoffee>,
+                loader: ({params}) => fetch(`http://localhost:5000/coffee/${params.id}`)
             }
         ]
     },

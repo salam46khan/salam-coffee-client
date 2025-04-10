@@ -32,7 +32,7 @@ const CoffeeCard = ({coffee}) => {
                     </div>
                 </div>
                 <div className='flex justify-center mt-2'>
-                    <Link to={'/'}>
+                    <Link to={`coffee/${coffee._id}`}>
                         <button className='my-btn'>Details</button>
                     </Link>
                 </div>

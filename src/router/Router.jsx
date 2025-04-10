@@ -7,6 +7,7 @@ import Login from '../pages/Login';
 import Register from '../pages/Register';
 import Admin from '../layout/Admin';
 import AddCoffee from '../components/DashboardCompo/AddCoffee';
+import AllCoffee from '../components/DashboardCompo/AllCoffee';
 
 const Router = createBrowserRouter([
     {
@@ -39,7 +40,7 @@ const Router = createBrowserRouter([
         children: [
             {
                 path: 'coffee',
-                element: <p>coffee</p>
+                element: <AllCoffee></AllCoffee>
             },
             {
                 path: 'add-coffee',

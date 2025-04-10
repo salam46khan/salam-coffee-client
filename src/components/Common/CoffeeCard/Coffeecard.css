@@ -1,0 +1,39 @@
+.coffee-card {
+    border: 1px solid;
+    width: 100%;
+    max-width: 280px;
+    background: var(--color-primaryColor);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.img-section {
+    height: 160px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-section img {
+    -webkit-filter: drop-shadow(5px 5px 15px #000000);
+    filter: drop-shadow(5px 5px 15px #000000);
+}
+
+.img-bg-shadow {
+    height: 1px;
+    width: 1px;
+    background: var(--color-Secondary);
+    border-radius: 50%;
+    box-shadow: 0 0 70px 40px var(--color-Secondary);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.coffee-card-content {
+    background: #00000079;
+    border-radius: 12px;
+    color: white;
+    padding: 10px;
+}

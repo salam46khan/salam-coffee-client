@@ -54,3 +54,7 @@
 .my-btn:hover{
   border-radius: 25px;
 }
+
+.table tbody tr:nth-child(even) {
+  background: var(--color-primaryColor);
+}

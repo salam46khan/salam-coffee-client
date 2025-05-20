@@ -58,3 +58,14 @@
 .table tbody tr:nth-child(even) {
   background: var(--color-primaryColor);
 }
+
+.auth{
+  width: 100%;
+  height: auto;
+  min-height: 100vh;
+  background: linear-gradient(#0000009c, #000000a1), url('./assets/img/dashboard-bg.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}

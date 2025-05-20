@@ -5,6 +5,9 @@ import DashNav from '../components/DashboardCompo/DashNav';
 const Admin = () => {
     const sideNav = <>
         <li>
+            <NavLink to={'/dashboard/profile'}>My Profile</NavLink>
+        </li>
+        <li>
             <NavLink to={'/dashboard/coffee'}>All Coffee</NavLink>
         </li>
         <li>
@@ -13,7 +16,12 @@ const Admin = () => {
     </>
     return (
         <div className='flex dashboard'>
-            <div className='bg-primaryColor text-white w-sm border-r border-[#e005]'>
+
+            <div className='absolute md:hidden'>
+                <p>hi</p>
+            </div>
+
+            <div className='bg-primaryColor hidden md:block text-white w-sm border-r border-[#e005]'>
                 <div className='flex justify-center py-3'>
                     <Link to={'/'}>
                         <img className='w-[150px]' src={logo} alt="" />

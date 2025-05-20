@@ -5,6 +5,7 @@
     background: var(--color-primaryColor);
     border-radius: 12px;
     overflow: hidden;
+    transition: 0.4s;
 }
 
 .img-section {
@@ -18,6 +19,7 @@
 .img-section img {
     -webkit-filter: drop-shadow(5px 5px 15px #000000);
     filter: drop-shadow(5px 5px 15px #000000);
+    transition: 0.4s;
 }
 
 .img-bg-shadow {
@@ -36,4 +38,8 @@
     border-radius: 12px;
     color: white;
     padding: 10px;
+}
+
+.coffee-card:hover .img-section img{
+    transform: scale(1.1) rotate(10deg);
 }

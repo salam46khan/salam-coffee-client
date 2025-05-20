@@ -52,7 +52,7 @@ const AllCoffee = () => {
             </div>
 
             <div>
-                <div className="overflow-x-auto">
+                <div className="overflow-x-scroll">
                     <table className="table">
                         {/* head */}
                         <thead>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, Navigate } from 'react-router-dom';
 import Root from '../layout/Root';
 import Home from '../pages/Home';
 import Auth from '../layout/Auth';
@@ -10,6 +10,8 @@ import AddCoffee from '../components/DashboardCompo/AddCoffee';
 import AllCoffee from '../components/DashboardCompo/AllCoffee';
 import Coffee from '../pages/Coffee';
 import SingleCoffee from '../components/CoffeeCompo/SingleCoffee';
+import PrivateRoute from './PrivateRoute';
+import Profile from '../components/DashboardCompo/Profile';
 
 const Router = createBrowserRouter([
     {
@@ -36,6 +38,10 @@ const Router = createBrowserRouter([
         element: <Auth></Auth>,
         children: [
             {
+                path: '',
+                element: <Navigate to={'/auth/login'}></Navigate>
+            },
+            {
                 path: 'login',
                 element: <Login></Login>
             },
@@ -47,7 +53,7 @@ const Router = createBrowserRouter([
     },
     {
         path: 'dashboard',
-        element: <Admin></Admin>,
+        element: <PrivateRoute><Admin></Admin></PrivateRoute>,
         children: [
             {
                 path: 'coffee',
@@ -56,7 +62,11 @@ const Router = createBrowserRouter([
             {
                 path: 'add-coffee',
                 element: <AddCoffee></AddCoffee>
-            }
+            },
+            {
+                path: 'profile',
+                element: <Profile></Profile>
+            },
         ]
     }
 ])

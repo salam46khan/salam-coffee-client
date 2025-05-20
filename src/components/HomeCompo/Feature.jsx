@@ -5,7 +5,7 @@ import { VscCoffee } from "react-icons/vsc";
 
 const Feature = () => {
     return (
-        <div className="feature py-10 px-3">
+        <div className="feature py-10 px-3 bg-white">
             <div className="container flex flex-col md:flex-row gap-3">
                 <div className="p-5">
                     <VscCoffee className="text-Secondary text-5xl"/>

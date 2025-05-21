@@ -17,6 +17,15 @@ A responsive online coffee shop application where users can browse products, vie
 
 ---
 
+## 🔐 Admin Access (Demo)
+
+> You can log in as an admin to explore full functionality:
+
+- **Email:** `salam@gmail.com`  
+- **Password:** `Salam1#`
+
+---
+
 ## 🚀 Features
 
 ### 👥 User Side

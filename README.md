@@ -1,12 +1,55 @@
-# React + Vite
+# ☕ Salam Coffee Shop
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Available-brightgreen?style=flat-square)](https://salam-coffee-shop.web.app/)
+[![Client Repo](https://img.shields.io/badge/Client%20Repo-Github-blue?style=flat-square)](https://github.com/salam46khan/salam-coffee-client)
+[![Server Repo](https://img.shields.io/badge/Server%20Repo-Github-blue?style=flat-square)](https://github.com/salam46khan/salam-coffee-server)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+A responsive online coffee shop application where users can browse products, view detailed information, and place orders after logging in. Admins can manage all product data including add, update, and delete operations securely.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🔗 Live Links
+
+- 🌐 **Live Website**: [https://salam-coffee-shop.web.app/](https://salam-coffee-shop.web.app/)
+- 💻 **Client Repository**: [salam-coffee-client](https://github.com/salam46khan/salam-coffee-client)
+- ⚙️ **Server Repository**: [salam-coffee-server](https://github.com/salam46khan/salam-coffee-server)
+
+---
+
+## 🚀 Features
+
+### 👥 User Side
+- 🔍 Browse all coffee products
+- 📖 View detailed information for each coffee item
+- 🛒 Order coffee (login required)
+- 🔐 Secure login system (authentication required for ordering)
+
+### 🔧 Admin Side
+- ➕ Add new coffee products
+- 📝 Update existing product details
+- ❌ Delete coffee items
+- 🔒 Admin-only protected routes
+
+---
+
+## 🔐 Authentication
+- Users must log in to place an order.
+- Admin routes are protected using role-based access control.
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
+- **React JS**
+- **React Router**
+- **Tailwind CSS**
+- **Axios / Fetch API**
+- **Firebase Hosting**
+
+### Backend
+- **Node.js**
+- **Express.js**
+- **MongoDB (Database)**
+- **CORS, Dotenv, etc.**

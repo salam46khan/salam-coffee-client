@@ -1,6 +1,10 @@
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import useCoffee from "../../hooks/useCoffee";
 
 const AddCoffee = () => {
+    const axiosPublic = useAxiosPublic()
+    const [, refetch] = useCoffee()
 
     const handleAddCoffee = e => {
         e.preventDefault()
@@ -12,21 +16,15 @@ const AddCoffee = () => {
         const category = form.category.value;
         const details = form.details.value;
         const photo = form.photo.value;
+        const price = form.price.value;
 
-        const newCoffee = { name, chef, supplier, taste, category, details, photo }
+        const newCoffee = { name, chef, supplier, taste, category, details, photo, price }
         console.log(newCoffee);
 
-        fetch('http://localhost:5000/coffee', {
-            method: "POST",
-            headers: {
-                'Content-Type': "application/json"
-            },
-            body: JSON.stringify(newCoffee)
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                if (data.insertedId) {
+        axiosPublic.post('/coffee', newCoffee)
+            .then(res => {
+                console.log(res.data);
+                if (res.data.acknowledged) {
                     Swal.fire({
                         position: "center",
                         icon: "success",
@@ -34,8 +32,32 @@ const AddCoffee = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
+                    form.reset()
+                    refetch()
                 }
             })
+
+
+        // fetch('http://localhost:5000/coffee', {
+        //     method: "POST",
+        //     headers: {
+        //         'Content-Type': "application/json"
+        //     },
+        //     body: JSON.stringify(newCoffee)
+        // })
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         console.log(data);
+        //         if (data.insertedId) {
+        //             Swal.fire({
+        //                 position: "center",
+        //                 icon: "success",
+        //                 title: "new coffee added successfuly",
+        //                 showConfirmButton: false,
+        //                 timer: 1500
+        //             });
+        //         }
+        //     })
 
     }
 
@@ -77,9 +99,18 @@ const AddCoffee = () => {
                             <input type="text" name="details" className="w-full rounded-3xl mt-2 shadow shadow-black p-2 px-4 focus:outline-none focus:shadow-md" placeholder="type details" />
                         </div>
                     </div>
+                    <div className=" grid gap-5 mt-5 md:grid-cols-2 grid-cols-1">
+                        <div className="col-span-1">
+                            <label className="fieldset-label text-slate-200">Photo</label>
+                            <input type="text" name="photo" className="w-full rounded-3xl mt-2 shadow shadow-black p-2 px-4 focus:outline-none focus:shadow-md" placeholder="paste photo URL" />
+                        </div>
+                        <div className="col-span-1">
+                            <label className="fieldset-label text-slate-200">Price</label>
+                            <input type="number" name="price" className="w-full rounded-3xl mt-2 shadow shadow-black p-2 px-4 focus:outline-none focus:shadow-md" placeholder="price" />
+                        </div>
+                    </div>
                     <div className="mt-5">
-                        <label className="fieldset-label text-slate-200">Photo</label>
-                        <input type="text" name="photo" className="w-full rounded-3xl mt-2 shadow shadow-black p-2 px-4 focus:outline-none focus:shadow-md" placeholder="paste photo URL" />
+
                     </div>
                     <div className="mt-5 flex justify-center">
                         <input className="my-btn text-white" type="submit" value='Add Coffee' />

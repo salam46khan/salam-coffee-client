@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import CoffeeCard from '../Common/CoffeeCard/CoffeeCard';
+import useCoffee from '../../hooks/useCoffee';
 
 const CoffeeSection = () => {
-    const [coffee, setCoffee] = useState([])
+    // const [coffee, setCoffee] = useState([])
 
-    useEffect(()=>{
-        fetch('http://localhost:5000/coffee')
-        .then(res => res.json())
-        .then(data => setCoffee(data))
-    }, [])
+    // useEffect(()=>{
+    //     fetch('http://localhost:5000/coffee')
+    //     .then(res => res.json())
+    //     .then(data => setCoffee(data))
+    // }, [])
 
-    const coffeeItems = coffee.length>3 ? coffee.slice(0, 3): coffee;
+    const [coffee] = useCoffee()
+
+    const coffeeItems = coffee.length>6 ? coffee.slice(0, 6): coffee;
 
     return (
         <div className='bg-slate-200 py-10 px-3'>

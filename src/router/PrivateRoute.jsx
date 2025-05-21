@@ -8,7 +8,7 @@ const PrivateRoute = ({children}) => {
     if (loader) {
         return <>
             <div className="sweet-loading w-full h-52 flex justify-center items-center">
-                {/* <RingLoader color="#000" /> */}
+                loading...
             </div>
         </>
     }

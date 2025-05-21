@@ -1,6 +1,12 @@
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import useCoffee from "../../hooks/useCoffee";
 
 const UpdateCoffee = ({ coffee }) => {
+
+    const axiosPublic = useAxiosPublic()
+    const [, refetch] = useCoffee()
+
     const handleUpdateCoffee = e => {
         e.preventDefault()
         const form = e.target;
@@ -16,16 +22,10 @@ const UpdateCoffee = ({ coffee }) => {
         console.log(UpdateNewCoffee);
 
 
-        fetch(`http://localhost:5000/coffee/${coffee._id}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(UpdateNewCoffee)
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.modifiedCount > 0) {
+        axiosPublic.put(`coffee/${coffee._id}`, UpdateNewCoffee)
+            .then(res => {
+                console.log(res.data);
+                if (res.data.modifiedCount > 0) {
                     Swal.fire({
                         position: "top-end",
                         icon: "success",
@@ -33,6 +33,7 @@ const UpdateCoffee = ({ coffee }) => {
                         showConfirmButton: false,
                         timer: 1500
                     });
+                    refetch()
                 }
             })
 

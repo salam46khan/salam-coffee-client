@@ -5,14 +5,18 @@ import coffeeItem from '../../../assets/img/coffee-item.png'
 const CoffeeCard = ({coffee}) => {
     return (
         <div className='coffee-card'>
-            <div className='img-section'>
+            <div className='img-section relative'>
                 <div className="img-bg-shadow"></div>
-                <img className='h-36' src={coffeeItem} alt="" />
+                <img className='h-36' src={coffee?.photo ? coffee.photo : coffeeItem} alt="" />
+
+                <div className='absolute bottom-2 left-2'>
+                    <p className='font-subTitle text-white font-bold'>{coffee?.price}/-</p>
+                </div>
             </div>
             <div className='coffee-card-content'>
                 <div className='grid grid-cols-2 items-stretch py-2'>
                     <div className='col-span-1 pr-2'>
-                        <p className='text-md uppercase font-bold'>{coffee?.name}</p>
+                        <p className='text-md font-subTitle font-bold'>{coffee?.name}</p>
                         <p className='text-sm mt-2 text-slate-200'>
                             {
                                 coffee?.details.length>45 ? coffee.details.slice(0,45)+"..." : coffee.details

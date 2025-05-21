@@ -2,11 +2,14 @@ import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
 import { Link, useNavigate } from 'react-router-dom';
 import { updateProfile } from 'firebase/auth';
+import useAxiosPublic from '../../hooks/useAxiosPublic';
+import GoogleLogin from './GoogleLogin';
 
 const SignForm = () => {
     const { createUser } = useContext(AuthContext);
     const [error, setError] = useState('');
     const navigate = useNavigate()
+    const axiosPublic = useAxiosPublic()
     // console.log(createUser);
 
     const handleSignUp = e => {
@@ -34,7 +37,7 @@ const SignForm = () => {
             return
         }
 
-        console.log(email, password, name);
+        // console.log(email, password, name);
 
         createUser(email, password)
             .then((result) => {
@@ -43,6 +46,15 @@ const SignForm = () => {
                     displayName: name,
                     photoURL: imgURL
                 })
+
+                const userInfo = {
+                    name, email
+                }
+                axiosPublic.post('/user', userInfo)
+                    .then(res => {
+                        console.log(res.data);
+                    })
+
                 navigate(location.state ? location.state : '/')
             })
             .catch(error => {
@@ -52,34 +64,44 @@ const SignForm = () => {
 
     }
     return (
-        <form onSubmit={handleSignUp} className="bg-[#fff1] rounded-xl shadow-2xl shadow-black p-5 w-full max-w-md">
-            <h2 className='text-2xl text-Secondary font-subTitle text-center font-bold'>Sign Up</h2>
-            <div className='py-2'>
-                <label className="fieldset-label text-white">Name</label>
-                <input type="text" className=" w-full rounded-3xl mt-2 shadow shadow-black p-2 px-4 text-white focus:outline-none focus:shadow-md" placeholder="name" name='name' />
-            </div>
-            <div className='py-2'>
-                <label className="fieldset-label text-white">Email</label>
-                <input type="email" className=" w-full rounded-3xl mt-2 shadow shadow-black p-2 px-4 text-white focus:outline-none focus:shadow-md" placeholder="email" name='email' />
-            </div>
-            <div className='py-2'>
-                <label className="fieldset-label text-white">Image URL</label>
-                <input type="text" className=" w-full rounded-3xl mt-2 shadow shadow-black p-2 px-4 text-white focus:outline-none focus:shadow-md" placeholder="profile photo URL" name='imgURL' />
-            </div>
-            <div className='py-2'>
-                <label className="fieldset-label text-white">Password</label>
-                <input type="password" className=" w-full rounded-3xl mt-2 shadow shadow-black p-2 px-4 text-white focus:outline-none focus:shadow-md" placeholder="password" name='password' />
-            </div>
+        <div className="bg-[#fff1] rounded-xl shadow-2xl shadow-black p-5 w-full max-w-md">
+            <form onSubmit={handleSignUp} >
+                <h2 className='text-2xl text-Secondary font-subTitle text-center font-bold'>Sign Up</h2>
+                <div className='py-2'>
+                    <label className="fieldset-label text-white">Name</label>
+                    <input type="text" className=" w-full rounded-3xl mt-2 shadow shadow-black p-2 px-4 text-white focus:outline-none focus:shadow-md" placeholder="name" name='name' />
+                </div>
+                <div className='py-2'>
+                    <label className="fieldset-label text-white">Email</label>
+                    <input type="email" className=" w-full rounded-3xl mt-2 shadow shadow-black p-2 px-4 text-white focus:outline-none focus:shadow-md" placeholder="email" name='email' />
+                </div>
+                <div className='py-2'>
+                    <label className="fieldset-label text-white">Image URL</label>
+                    <input type="text" className=" w-full rounded-3xl mt-2 shadow shadow-black p-2 px-4 text-white focus:outline-none focus:shadow-md" placeholder="profile photo URL" name='imgURL' />
+                </div>
+                <div className='py-2'>
+                    <label className="fieldset-label text-white">Password</label>
+                    <input type="password" className=" w-full rounded-3xl mt-2 shadow shadow-black p-2 px-4 text-white focus:outline-none focus:shadow-md" placeholder="password" name='password' />
+                </div>
 
-            <input className='my-btn text-white w-full my-3' type="submit" value="Sign Up" />
+                <input className='my-btn text-white w-full mt-3' type="submit" value="Sign Up" />
+                
+            </form>
 
-            <div className="text-red-400 ">
-                <p className='py-2'>{error ? error : ''}</p>
-            </div>
             <div>
-                <p className='text-white'>If you have already an account, please <Link className='text-blue-500' to={'/auth/login'}>Login</Link> </p>
+                <div className="divider">OR</div>
+
+                <GoogleLogin></GoogleLogin>
+
+                <div>
+                    <p className='text-white'>If you have already an account, please <Link className='text-blue-500' to={'/auth/login'}>Login</Link> </p>
+                </div>
+
+                <div className="text-red-400 ">
+                    <p className='py-2'>{error ? error : ''}</p>
+                </div>
             </div>
-        </form>
+        </div>
     );
 };
 

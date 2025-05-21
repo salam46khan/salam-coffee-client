@@ -3,15 +3,14 @@ import { FiEdit } from "react-icons/fi";
 import { MdDelete } from "react-icons/md";
 import Swal from "sweetalert2";
 import UpdateCoffee from "./UpdateCoffee";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import useCoffee from "../../hooks/useCoffee";
+import { Link } from "react-router-dom";
 
 const AllCoffee = () => {
-    const [coffee, setCoffee] = useState([])
-
-    useEffect(() => {
-        fetch('http://localhost:5000/coffee')
-            .then(res => res.json())
-            .then(data => setCoffee(data))
-    }, [])
+  
+    const [coffee, refetch] = useCoffee()
+    const axiosPublic = useAxiosPublic()
 
     const handleDeleteCoffee = id => {
         Swal.fire({
@@ -25,19 +24,11 @@ const AllCoffee = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/coffee/${id}`, {
-                    method: "DELETE"
+                axiosPublic.delete(`coffee/${id}`)
+                .then(res=> {
+                    console.log(res.data);
+                    refetch()
                 })
-                    .then(res => res.json())
-                    .then(data => {
-                        if (data.deletedCount > 0) {
-                            Swal.fire({
-                                title: "Deleted!",
-                                text: "Your file has been deleted.",
-                                icon: "success"
-                            });
-                        }
-                    })
 
 
             }
@@ -75,18 +66,25 @@ const AllCoffee = () => {
                                     <td>{coffee.name}</td>
                                     <td>{coffee.category}</td>
                                     <td className="flex gap-3">
-                                        <button onClick={() => handleDeleteCoffee(coffee._id)} className="bg-red-600 h-8 w-8 flex justify-center items-center">
+                                        <button onClick={() => handleDeleteCoffee(coffee._id)} className="bg-red-600 h-8 w-8 flex justify-center items-center cursor-pointer">
                                             <MdDelete className="text-xl" />
                                         </button>
-                                        <button onClick={() => document.getElementById('my_modal_3').showModal()} className="bg-green-600 h-8 w-8 flex justify-center items-center">
+
+
+                                        <Link to={`/dashboard/update/${coffee._id}`} className="bg-green-600 h-8 w-8 flex justify-center items-center cursor-pointer">
                                             <FiEdit className="text-xl" />
-                                        </button>
+                                        </Link>
+
+
+                                        {/* <button onClick={() => document.getElementById('my_modal_3').showModal()} className="bg-green-600 h-8 w-8 flex justify-center items-center">
+                                            <FiEdit className="text-xl" />
+                                        </button> */}
 
                                         {/* dialog  */}
-                                        <dialog id="my_modal_3" className="modal">
+                                        {/* <dialog id="my_modal_3" className="modal">
                                             <div className="modal-box bg-[#000000b4]">
                                                 <form method="dialog">
-                                                    {/* if there is a button in form, it will close the modal */}
+                                                    
                                                     <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                                                 </form>
 
@@ -94,7 +92,7 @@ const AllCoffee = () => {
                                                     <UpdateCoffee coffee={coffee}></UpdateCoffee>
                                                 </div>
                                             </div>
-                                        </dialog>
+                                        </dialog> */}
 
                                     </td>
 

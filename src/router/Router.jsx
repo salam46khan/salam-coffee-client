@@ -12,6 +12,8 @@ import Coffee from '../pages/Coffee';
 import SingleCoffee from '../components/CoffeeCompo/SingleCoffee';
 import PrivateRoute from './PrivateRoute';
 import Profile from '../components/DashboardCompo/Profile';
+import AdminRouter from './AdminRouter';
+import UpdateCo from '../components/DashboardCompo/UpdateCo';
 
 const Router = createBrowserRouter([
     {
@@ -28,8 +30,7 @@ const Router = createBrowserRouter([
             },
             {
                 path: 'coffee/:id',
-                element: <SingleCoffee></SingleCoffee>,
-                loader: ({params}) => fetch(`http://localhost:5000/coffee/${params.id}`)
+                element: <SingleCoffee></SingleCoffee>
             }
         ]
     },
@@ -61,7 +62,11 @@ const Router = createBrowserRouter([
             },
             {
                 path: 'add-coffee',
-                element: <AddCoffee></AddCoffee>
+                element: <AdminRouter><AddCoffee></AddCoffee></AdminRouter>
+            },
+            {
+                path: 'update/:id',
+                element: <AdminRouter><UpdateCo></UpdateCo></AdminRouter>
             },
             {
                 path: 'profile',
